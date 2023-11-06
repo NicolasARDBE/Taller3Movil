@@ -1,6 +1,7 @@
 package com.example.taller3movil
 
 import android.Manifest
+import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.content.res.Resources
@@ -68,6 +69,10 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
 
         //map.controller.setZoom(30.0)
 
+        binding.users.setOnClickListener{
+            startActivity(Intent(baseContext, UsuariosDisponiblesActivity::class.java))
+        }
+
         if (jsonObject != null) {
             val locations = jsonObject.getJSONObject("locations")
             val locationsArray = jsonObject.getJSONArray("locationsArray")
@@ -84,9 +89,7 @@ class HomeActivity : AppCompatActivity(), LocationService.LocationUpdateListener
                 Log.i("lectura", "longitud: $longitude, latitud: $latitude")
             }
         } else {
-
         }
-
         if (ActivityCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION

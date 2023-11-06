@@ -16,6 +16,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildFeatures {
@@ -57,4 +58,5 @@ dependencies {
     implementation ("com.github.MKergall:osmbonuspack:6.8.0")
     implementation ("org.osmdroid:osmdroid-android:6.1.17")
     implementation("androidx.preference:preference-ktx:1.2.1")
+    implementation ("com.github.parse-community:ParseLiveQuery-Android:1.2.2")
 }

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Taller3Movil</string>
+    <string name="hintContrasenia">Contraseña</string>
+    <string name="hintUsuario">Nombre de usuario</string>
 </resources>

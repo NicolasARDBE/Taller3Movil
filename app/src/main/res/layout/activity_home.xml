@@ -6,11 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:translationY="20dp">
+        <Button
+            android:id="@+id/users"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Usuarios"
+            android:layout_weight="1"
+            />
+    <Button
+        android:id="@+id/available"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Disponible"
+        android:layout_weight="1"
+        />
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cerrar Sesión"
+        android:layout_weight="1"/>
+    </LinearLayout>
+
     <org.osmdroid.views.MapView
         android:id="@+id/mapa"
-        android:layout_width="411dp"
-        android:layout_height="511dp"
-        android:layout_gravity="center_horizontal|center_vertical">
+        android:layout_width="match_parent"
+        android:layout_height="650dp"
+        android:layout_gravity="bottom">
     </org.osmdroid.views.MapView>
+
+
 
 </FrameLayout>

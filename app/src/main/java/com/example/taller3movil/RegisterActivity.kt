@@ -22,9 +22,9 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.storage
 import com.parse.ParseObject
+import com.parse.livequery.ParseLiveQueryClient
 import java.io.File
 import java.net.URI
-import java.net.URISyntaxException
 import java.util.UUID
 
 
@@ -58,8 +58,6 @@ class RegisterActivity : AppCompatActivity() {
                 loadImage(cameraUri)
             }
         })
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
@@ -96,12 +94,9 @@ class RegisterActivity : AppCompatActivity() {
     //Guardar lo demás en livequery
     fun saveData() {
         if(validateForm()) {
-            try {
-                uploadFile(cameraUri)
-            } catch (e: URISyntaxException) {
-                e.printStackTrace()
-                Log.i("HoliUri", "Getting image1")
-            }
+            val parseLiveQueryClient = ParseLiveQueryClient.Factory.getClient()
+            //Guardar la información
+            uploadFile(cameraUri)
             Log.i(ContentValues.TAG, "Attempt to write on parse");
             var firstObject = ParseObject.create("LoginUser")
             val username = binding.email.getText().toString();
@@ -145,7 +140,8 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun uploadFile(cameraUri : Uri) {
         storageRef = firebaseStorage.reference
-        val imageRef: StorageReference = storageRef.child("imagenes/${UUID.randomUUID()}")
+        val username = binding.email.getText().toString();
+        val imageRef: StorageReference = storageRef.child("imagenes/$username")
         imageRef.putFile(cameraUri)
             .addOnSuccessListener { // Get a URL to the uploaded content
                 Log.i("Holi", "Succesfully upload image")
